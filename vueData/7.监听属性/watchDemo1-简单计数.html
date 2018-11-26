@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 1. 导入Vue的包 -->
+  <script src="./lib/vue-2.4.0.js"></script>
+</head>
+    
+<body>
+    <div id="app">
+        <p style="font-size:30px">计数器：{{count}}</p>
+        <button style="font-size:30px" @click="count+=6">点我加加加</button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                count:0,
+                clickCount:0
+            }
+        });
+        vm.$watch("count",function(nval,oval){
+            alert('计数器值的变化 :' + oval + ' 变为 ' + nval + '!');
+        });
+    </script>
+</body>
+</html>

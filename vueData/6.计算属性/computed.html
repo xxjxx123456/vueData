@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 1. 导入Vue的包 -->
+  <script src="./lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+  <!-- 计算属性：computed，处理一些复杂逻辑 -->
+<div id="app">
+  <!-- {{ message.split('').reverse().join('') }} -->
+  <p>反转前：{{message}}</p>
+  <p>反转后：{{reverseMessage}}</p>
+  <p>使用方法后反转字符串: {{ reversedMessage2() }}</p>
+</div>
+  
+<script>
+    new Vue({
+      el:'#app',
+      data:{
+        message:'计算属性xxj！变了'
+      },
+      computed:{
+        reverseMessage:function () {
+          return this.message.split('').reverse().join('')
+        }
+      },
+      methods:{
+        reversedMessage2:function(){
+          return this.message.split('').reverse().join('')
+        }
+      }
+      // computed 与 methods 比较
+      // 使用 methods 来替代 computed，效果上两个都是一样的，但是 computed 是基于它的依赖缓存，
+      // 只有相关依赖发生改变时才会重新取值。而使用 methods ，在重新渲染的时候，函数总会重新调用执行。
+      // 可以说使用 computed 性能会更好，但是如果你不希望缓存，你可以使用 methods 属性。
+
+    })
+</script>
+</body>
+
+</html>

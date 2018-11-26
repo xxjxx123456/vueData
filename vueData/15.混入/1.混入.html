@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/vue-2.4.0.js"></script>
+
+</head>
+
+<body>
+    <div id = "databinding"></div>
+    <script type = "text/javascript">
+    var vm = new Vue({
+        el: '#databinding',
+        data: {
+        },
+        methods : {
+        },
+    });
+    // 定义一个混入对象
+    var myMixin = {
+        created: function () {
+            this.startmixin()
+        },
+        methods: {
+            startmixin: function () {
+                document.write("欢迎来到混入实例");
+            }
+        }
+    };
+    var Component = Vue.extend({
+        mixins: [myMixin]
+    })
+    var component = new Component();
+    </script>
+</body>
+
+</html>

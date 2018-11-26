@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+       <!-- `greet` 是在下面定义的方法名 -->
+      <button v-on:click="greet">Greet</button>
+    </div>
+  
+    <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+      name: 'Vue.js'
+      },
+      // 在 `methods` 对象中定义方法
+      methods: {
+      greet: function (event) {
+        // `this` 在方法里指当前 Vue 实例
+        alert('Hello ' + this.name + '!')
+        // `event` 是原生 DOM 事件
+        if (event) {
+          alert(event.target.tagName)
+        }
+      }
+      }
+    })
+    // 也可以用 JavaScript 直接调用方法
+    app.greet() // -> 'Hello Vue.js!'
+    </script>
+    </body>
+
+</html>

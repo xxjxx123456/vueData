@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>购物车</title>
+  <!-- 1. 导入Vue的包 -->
+    <script src="./lib/vue-2.4.0.js"></script> 
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+</head>
+
+<style>
+    table {
+            border: 1px solid black;
+        }
+        table {
+            width: 100%;
+        }
+
+        th {
+            height: 50px;
+        }
+        th, td {
+            border-bottom: 1px solid #ddd;
+        }  
+</style>    
+<body>
+    <div id="app">
+        <table>
+            <tr>
+                <td>序号</td>
+                <td>商品名称</td>
+                <td>商品价格</td>
+                <td>购买数量</td>
+                <td>操作</td>
+            </tr>
+            <tr v-for="cart in cartListJson">
+                <td>{{cart.id}}</td>
+                <td>{{cart.name}}</td>
+                <td>{{cart.price}}</td>
+                <td>
+                    <button v-on:click="cart.count-=1" style="font-size:30px" >-</button>
+                    {{cart.count}}
+                    <button v-on:click="cart.count+=1" style="font-size:30px">+</button>
+                </td>
+                <td>
+                    <button v-on:click="cart.count=0">清零</button>
+                </td>
+            </tr>
+        </table>
+        总价格：${{totalPrice}}
+    </div>
+
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data: {
+                cartListJson: [{
+                id: 1,
+                name: 'iphone 8',
+                price: 5099,
+                count: 1
+                },
+                {
+                    id: 2,
+                    name: 'iphone xs',
+                    price: 8699,
+                    count: 2
+                },
+                {
+                    id: 3,
+                    name: 'iphone xr',
+                    price: 6499,
+                    count: 3
+                }]  
+        },
+        methods:{
+            totalPrice:function(){
+                var totalP = 0;
+                for (var i = 0; i < this.cartListJson.length; i++) {
+                    newPrice += this.cartListJson[i].price * this.cartListJson[i].count; 
+                }
+                return totalP;
+            }
+        }
+        })
+    </script>
+</body>
+</html>

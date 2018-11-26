@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id = "databinding"></div>
+    <script type = "text/javascript">
+    var mixin = {
+        created: function () {
+            document.write('混入调用' + '<br>')
+        }
+    }
+    new Vue({
+        mixins: [mixin],
+            created: function () {
+            document.write('组件调用' + '<br>')
+        }
+    });
+    </script>
+    </body>
+</html>

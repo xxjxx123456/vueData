@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+        <div id="app">
+            <p>input 元素：</p>
+            <!-- <input v-model="message" placeholder="编辑我……"> -->
+            <input v-model.lazy="message" placeholder="编辑我……">
+             <!-- 修饰符：.lazy，.number，.trim -->
+            <p>消息是: {{ message }}</p>
+            
+            <p>textarea 元素：</p>
+            <p style="white-space: pre">{{ message2 }}</p>
+            <textarea v-model="message2" placeholder="多行文本输入……"></textarea>
+        </div>
+        
+        <script>
+        new Vue({
+            el: '#app',
+            data: {
+            message: 'Runoob111',
+            message2: '菜鸟教程\r\nhttp://www.runoob.com'
+            }
+        })
+        </script>
+</body>
+
+</html>
